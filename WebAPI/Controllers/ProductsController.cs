@@ -4,6 +4,7 @@ using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading;
 
 namespace WebAPI.Controllers
 {
@@ -17,8 +18,9 @@ namespace WebAPI.Controllers
             _productService = productService;
         }
         [HttpGet("getall")]
-        public IActionResult Get()
+        public IActionResult GetAll()
         {
+            Thread.Sleep(1000);
             var result= _productService.GetAll();
             if (result.Success)
             {
